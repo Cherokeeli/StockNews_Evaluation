@@ -1,4 +1,5 @@
 import numpy as np
+import tensorflow as tf
 # '\u4E00'19968 && c<='\u9FA5‘ 40869
 
 
@@ -35,6 +36,13 @@ c = np.array([1,2,3])
 d = np.append(b,c)
 e = d.reshape(2,3)
 print(e)
-print(np.concatenate((e,c)))
+# print(np.concatenate((e,c)))
 
+a = tf.constant([1,2,3,4,5,6],shape=[1,6])
+b = tf.constant([1,2,3,4,5,6,1,2,3,4,5,6], shape=[6,2])
+c = tf.matmul(a,b)
+sess = tf.InteractiveSession()
+tf.global_variables_initializer().run()
+
+print(sess.run(c))
 #print(a)

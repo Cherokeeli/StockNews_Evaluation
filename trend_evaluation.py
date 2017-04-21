@@ -110,8 +110,8 @@ tf.global_variables_initializer().run()
 for i in range(500):
     # print("x: ",np.array([1,2,3,4]).shape)
     # lr = 0.1
-    if (i%5==0):
-        print('train: %d times, total: %d' % (i/5,100))
+    # if (i%5==0):
+    #     print('train: %d times, total: %d' % (i/5,100))
     batch_x, batch_y, batch_a = next_batch(x_train, y_train,a_train,i,10)
     # print(batch_y)
     sess.run(train_step, feed_dict={x1: batch_x,x2:batch_a, y_: batch_y, learning_rate:0.09})
@@ -123,4 +123,5 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 print('total accuracy: ',sess.run(accuracy, feed_dict={x1: x_test,x2: a_test, y_: y_test}))
 print('rise accuracy: ',sess.run(accuracy, feed_dict={x1: x_r_test,x2: a_r_test, y_: y_r_test}))
 print('drop accuracy: ',sess.run(accuracy, feed_dict={x1: x_d_test,x2: a_d_test, y_: y_d_test}))
+print('Weight for dictionary', sess.run(W1))
 # print(sess.run(y, feed_dict={x1: x_test,x2: a_test, y_: y_test}))
